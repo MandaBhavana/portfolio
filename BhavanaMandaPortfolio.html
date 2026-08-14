@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhavana Manda | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f7f7f9;
+      --text-main: #111111;
+      --text-muted: #71717a;
+      
+      --folder-orange: #ff6b4a;
+      --folder-yellow: #f4c430;
+      --folder-purple: #5c52e5;
+      --folder-grey: #a0a5b5;
+      --folder-green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      padding-top: 155px;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(247, 247, 249, 0.95);
+      backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      padding: 16px 50px;
+      height: 135px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      z-index: 1000;
+      border-bottom: 1px solid #e2e4e9;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .top-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-self: start;
+    }
+
+    @keyframes avatarFloatBounce {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-4px) scale(1.02);
+      }
+    }
+
+    .top-nav-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid transparent;
+      background-image: linear-gradient(#f7f7f9, #f7f7f9), linear-gradient(135deg, #5c52e5, #ff6b4a, #f4c430);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: 0 10px 25px rgba(92, 82, 229, 0.3);
+      animation: avatarFloatBounce 3.5s ease-in-out infinite;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+    }
+
+    .top-nav-avatar:hover {
+      transform: scale(1.08) rotate(2deg);
+    }
+
+    .top-nav-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .top-nav-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #111111;
+      line-height: 1.2;
+    }
+
+    .top-nav-role {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .top-nav-center {
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-nav-right {
+      justify-self: end;
+      font-weight: 800;
+      color: #111;
+      font-size: 1rem;
+    }
+
+    /* Floating Fixed Back Button */
+    .floating-back-btn {
+      position: fixed;
+      top: 150px;
+      left: 50px;
+      display: none;
+      z-index: 1001;
+      background: #ffffff;
+      color: #111111;
+      border: 1.5px solid #e2e4e9;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .floating-back-btn:hover {
+      background: #111111;
+      color: #ffffff;
+      border-color: #111111;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section / Landing */
+    .hero-section {
+      min-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 30px;
+      padding-bottom: 40px;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .hero-header {
+      text-align: center;
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+
+    .title-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 6px;
+      padding-top: 25px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .bg-watermark {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, rgba(140, 145, 155, 0.32) 0%, rgba(140, 145, 155, 0.02) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 16px;
+      z-index: 0;
+      white-space: nowrap;
+      user-select: none;
+      pointer-events: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-header h1 {
+      position: relative;
+      font-size: 4.2rem;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      color: #111;
+      z-index: 1;
+      margin-top: 25px;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      white-space: nowrap;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0.3) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0.3) 100%);
+    }
+
+    .contact-details-grid {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 12px;
+      margin-bottom: 10px;
+      z-index: 2;
+    }
+
+    .contact-item {
+      background: #ffffff;
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1px solid rgba(0,0,0,0.04);
+      font-weight: 600;
+      color: #333;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .hero-action-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      z-index: 2;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--folder-purple);
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(92, 82, 229, 0.25);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 22px rgba(92, 82, 229, 0.35);
+      background: #4c42d4;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #111111;
+      border: 1.5px solid #e2e4e9;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px) scale(1.03);
+      border-color: #111111;
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .btn-live {
+      background: #10b981;
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.2);
+      border: 1px solid transparent;
+    }
+
+    .btn-live:hover {
+      background: #059669;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Spread Non-Overlapping Interactive Folders Stack */
+    .folders-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      height: 230px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-top: 25px;
+      gap: 15px;
+    }
+
+    .folder {
+      position: relative;
+      width: 180px;
+      height: 145px;
+      border-radius: 16px 16px 12px 12px;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+      color: #fff;
+      font-weight: 700;
+      transform-origin: bottom center;
+    }
+
+    .folder::before {
+      content: '';
+      position: absolute;
+      top: -11px;
+      left: 0;
+      width: 60px;
+      height: 15px;
+      border-radius: 6px 6px 0 0;
+      background: inherit;
+    }
+
+    .folder-paper {
+      position: absolute;
+      top: -26px;
+      left: 16px;
+      right: 16px;
+      height: 55px;
+      background: #ffffff;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.04);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: -1;
+      padding: 8px 10px;
+      font-size: 0.62rem;
+      color: #777;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .folder:hover {
+      transform: translateY(-12px) scale(1.05);
+      z-index: 50;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .folder:hover .folder-paper {
+      transform: translateY(-12px) scale(1.02);
+    }
+
+    .folder .folder-title {
+      font-size: 0.68rem;
+      opacity: 0.88;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 2px;
+    }
+
+    .folder .folder-year {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .f-orange { background: var(--folder-orange); transform: rotate(-2deg); z-index: 1; }
+    .f-yellow { background: var(--folder-yellow); transform: rotate(-1deg); z-index: 2; color: #222; }
+    .f-purple { background: var(--folder-purple); transform: rotate(1deg); z-index: 3; width: 190px; height: 155px; }
+    .f-grey   { background: var(--folder-grey); transform: rotate(2deg); z-index: 4; }
+    .f-green  { background: var(--folder-green); transform: rotate(1.5deg); z-index: 5; }
+
+    /* Main Portfolio Flow Container */
+    .portfolio-flow {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px 40px 100px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 70px;
+    }
+
+    .portfolio-flow.isolated-mode .content-section {
+      display: none !important;
+    }
+
+    .portfolio-flow.isolated-mode .content-section.active-target {
+      display: block !important;
+      animation: fadeInSection 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(25px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .content-section {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 20px 0;
+      position: relative;
+      scroll-margin-top: 150px;
+      transition: all 0.3s ease;
+    }
+
+    .section-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+    }
+
+    .b-orange { background: #ffebeb; color: var(--folder-orange); }
+    .b-yellow { background: #fffde6; color: #a37f00; }
+    .b-purple { background: #f0eefe; color: var(--folder-purple); }
+    .b-grey   { background: #f0f1f5; color: #555; }
+    .b-green  { background: #e6f7ef; color: #059669; }
+
+    .content-section h2 { font-size: 2.1rem; font-weight: 800; margin-bottom: 18px; color: #111; }
+    .content-section > p { font-size: 1.05rem; color: #555; line-height: 1.75; max-width: 1100px; }
+
+    .grid-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+      margin-top: 20px;
+    }
+
+    .grid-card {
+      background: #ffffff;
+      padding: 26px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .grid-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 18px 35px rgba(92, 82, 229, 0.1);
+      border-color: rgba(92, 82, 229, 0.25);
+    }
+
+    .grid-card h4 { font-size: 1.15rem; color: #111; font-weight: 700; margin-bottom: 10px; }
+    .grid-card p { font-size: 0.95rem; color: #666; line-height: 1.6; }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      margin-bottom: 18px;
+    }
+
+    .card-tag {
+      background: #f0eefe;
+      color: var(--folder-purple);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 20px;
+    }
+
+    .skill-category-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    }
+
+    .skill-category-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-cloud span {
+      background: #f4f5f7;
+      color: #333;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tag-cloud span:hover {
+      background: var(--folder-purple);
+      color: #ffffff;
+      border-color: var(--folder-purple);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid #e2e4e9;
+      background: #fff;
+    }
+
+    @media (max-width: 900px) {
+      body { padding-top: 110px; }
+      .top-nav { padding: 16px 20px; height: 105px; }
+      .top-nav-avatar { width: 85px; height: 85px; }
+      .hero-section { padding-left: 16px; padding-right: 16px; padding-top: 10px; }
+      .hero-header h1 { font-size: 2.8rem; white-space: normal; }
+      .bg-watermark { font-size: 6.5rem; top: -10px; letter-spacing: 6px; }
+      .folders-wrapper { max-width: 100%; height: auto; flex-wrap: wrap; gap: 12px; justify-content: center; }
+      .folder { width: 150px; height: 120px; padding: 12px; transform: none !important; }
+      .folder .folder-year { font-size: 1rem; }
+      .folder-paper { font-size: 0.5rem; height: 40px; top: -20px; }
+      .portfolio-flow { padding: 20px 16px 80px 16px; gap: 40px; }
+      .grid-list { grid-template-columns: 1fr; }
+      .floating-back-btn { top: 120px; left: 16px; padding: 7px 14px; font-size: 0.78rem; }
+      .content-section { scroll-margin-top: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <div class="top-nav">
+    <div class="top-nav-left">
+      <img src="photo.jpg" alt="Bhavana Manda" class="top-nav-avatar">
+      <div class="top-nav-titles">
+        <span class="top-nav-name">Bhavana Manda</span>
+        <span class="top-nav-role">MS. APPLIED DATA SCIENCE</span>
+      </div>
+    </div>
+    <div class="top-nav-center"></div>
+    <div class="top-nav-right">
+      <span>2026</span>
+    </div>
+  </div>
+
+  <!-- FLOATING FIXED BACK BUTTON -->
+  <button class="floating-back-btn" id="floating-back" onclick="resetToFullView()">← Home</button>
+
+  <!-- HERO SECTION / LANDING -->
+  <section class="hero-section" id="hero-top">
+    <div class="hero-header">
+      
+      <div class="title-container">
+        <div class="bg-watermark">PORTFOLIO</div>
+        <h1>Bhavana Manda</h1>
+      </div>
+
+      <p style="font-size: 1.1rem; color: #111; font-weight: 600; margin-top: 10px; z-index: 2;">
+        Turning complex data into clean models, smart insights, and things that actually work.!
+      </p>
+
+      <div class="contact-details-grid">
+        <div class="contact-item">bhavanamanda.reddy@gmail.com</div>
+        <div class="contact-item">+1 (315) 566-1754</div>
+      </div>
+      
+      <div class="hero-action-buttons">
+        <a href="mailto:bhavanamanda.reddy@gmail.com" class="btn btn-primary">Send Email</a>
+        <a href="tel:3155661754" class="btn btn-secondary">Call Me</a>
+        <a href="https://github.com/MandaBhavana" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+        <a href="https://www.linkedin.com/in/bhavana-manda-b929ba2a1/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+      </div>
+
+      <p style="font-size: 0.85rem; margin-top: 18px; opacity: 0.7; z-index: 2;">
+        Click any folder below to isolate that specific section, or scroll down to explore everything!
+      </p>
+    </div>
+
+    <!-- SPREAD FOLDER STACK (NO OVERLAP) -->
+    <div class="folders-wrapper">
+      <div class="folder f-orange" onclick="isolateSection('sec-about', this)">
+        <div class="folder-paper">DOC_01.PDF</div>
+        <div class="folder-title">PROFILE</div>
+        <div class="folder-year">About</div>
+      </div>
+
+      <div class="folder f-purple" onclick="isolateSection('sec-projects', this)">
+        <div class="folder-paper">PROJECTS.ZIP</div>
+        <div class="folder-title">FEATURED</div>
+        <div class="folder-year">Projects</div>
+      </div>
+
+       <div class="folder f-grey" onclick="isolateSection('sec-experience', this)">
+        <div class="folder-paper">EXP_LIST.DOC</div>
+        <div class="folder-title">TRAINEE</div>
+        <div class="folder-year">Work</div>
+      </div>
+
+      <div class="folder f-yellow" onclick="isolateSection('sec-skills', this)">
+        <div class="folder-paper">STACK.TXT</div>
+        <div class="folder-title">SKILLS</div>
+        <div class="folder-year">Tech</div>
+      </div>
+
+      <div class="folder f-green" onclick="isolateSection('sec-education', this)">
+        <div class="folder-paper">EDU.PDF</div>
+        <div class="folder-title">ACADEMIC</div>
+        <div class="folder-year">Education</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN PORTFOLIO FLOW CONTAINER -->
+  <div class="portfolio-flow" id="portfolio-flow">
+
+   <!-- SECTION 1: ABOUT -->
+    <div class="content-section" id="sec-about">
+      <span class="section-badge b-orange">01. Profile</span>
+      <h2>About Me</h2>
+      
+      <p style="font-size: 1.1rem; font-weight: 700; color: #111; margin-bottom: 14px;">
+        Hi, I’m Bhavana
+      </p>
+      
+      <p style="margin-bottom: 16px;">
+        I’m a <strong>Computer Science graduate with a Master’s in Applied Data Science</strong>, with a strong interest in transforming ideas, data, and technology into meaningful and practical solutions.
+      </p>
+
+      <p style="margin-bottom: 16px;">
+        My work spans <strong>data, AI, software, visualization, and creative technology</strong>. I enjoy understanding complex problems, exploring new ideas, and developing solutions that go beyond functionality  solutions that are <strong>intuitive, engaging, and purposeful</strong>.
+      </p>
+
+      <p style="margin-bottom: 24px;">
+        From <strong>interactive dashboards and data-driven applications to machine learning projects and AI-powered experiences</strong>, I enjoy working across different areas of technology and continuously expanding my skills through hands-on projects.
+      </p>
+
+      <h3 style="font-size: 1.25rem; font-weight: 800; color: #111; margin-bottom: 12px; margin-top: 24px;">What I’m About</h3>
+      
+      <div class="grid-list" style="margin-bottom: 24px;">
+        <div class="grid-card">
+          <h4>Curiosity</h4>
+          <p>Continuously exploring new technologies, ideas, and approaches to solving problems.</p>
+        </div>
+        <div class="grid-card">
+          <h4>Building</h4>
+          <p>I learn best by creating. I enjoy taking an idea from concept to a tangible, working solution.</p>
+        </div>
+        <div class="grid-card">
+          <h4>Problem Solving</h4>
+          <p>Breaking down complex challenges, identifying patterns, and finding practical ways to use technology to create better solutions.</p>
+        </div>
+        <div class="grid-card">
+          <h4>Creativity</h4>
+          <p>Bringing thoughtful design, interaction, and creativity into technical work to make solutions more engaging and effective.</p>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.25rem; font-weight: 800; color: #111; margin-bottom: 12px; margin-top: 24px;">Beyond the Code</h3>
+
+      <p style="margin-bottom: 16px;">
+        I believe technology is constantly evolving, and that creates endless opportunities to learn, experiment, and grow. Rather than limiting myself to one area, I enjoy exploring different disciplines and discovering where technology, creativity, and problem-solving intersect.
+      </p>
+
+      <p style="margin-bottom: 16px;">
+        I’m always open to <strong>learning, collaborating, exploring new challenges, and building meaningful things.</strong>
+      </p>
+
+      <p style="font-weight: 700; color: var(--folder-purple); margin-top: 16px;">
+        This portfolio is a reflection of what I’ve been learning, creating, and exploring.
+      </p>
+    </div>
+    <!-- SECTION 2: PROJECTS -->
+    <div class="content-section" id="sec-projects">
+      <span class="section-badge b-purple">02. Projects</span>
+      <h2>Featured Projects</h2>
+      <div class="grid-list">
+        
+        <div class="grid-card">
+          <div>
+            <h4>University Sustainability Dashboard</h4>
+            <p>An interactive R Shiny dashboard for analyzing university sustainability metrics, including energy consumption, water usage, and carbon emissions, with KPI tracking and time-based visualizations.</p>
+            <div class="card-tags">
+              <span class="card-tag">R Shiny</span>
+              <span class="card-tag">KPI Analytics</span>
+              <span class="card-tag">Data Visualization</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://bhavana-m.shinyapps.io/university-sustainability-dashboard/" target="_blank" rel="noopener noreferrer" class="btn btn-live">Live App</a>
+            <a href="https://github.com/MandaBhavana/sustainability-dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repository</a>
+          </div>
+        </div>
+
+        <div class="grid-card">
+          <div>
+            <h4>Clarkson Student Dashboard</h4>
+            <p> An interactive R Shiny dashboard for exploring Clarkson University student and faculty data, featuring searchable records, geographic visualization, and interactive world maps to analyze the global distribution of the university community.</p>
+            <div class="card-tags">
+              <span class="card-tag">R Shiny</span>
+              <span class="card-tag">Geospatial Analytics</span>
+              <span class="card-tag">Interactive Data Filtering</span>
+              <span class="card-tag">Data Visualization</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://clarksonuniv.shinyapps.io/lokbhavnik/" target="_blank" rel="noopener noreferrer" class="btn btn-live">Live App</a>
+            <a href="https://github.com/MandaBhavana/clarkson-stutent-dashboard-" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repository</a>
+          </div>
+        </div>
+
+        <div class="grid-card">
+          <div>
+            <h4>Arthritis Severity Detection (Deep Learning)</h4>
+            <p>An computer vision application built to classify the severity stages of knee osteoarthritis from medical X-ray imaging using a deep learning workflow deployed via Streamlit.</p>
+            <div class="card-tags">
+              <span class="card-tag">TensorFlow</span>
+              <span class="card-tag">DenseNet121</span>
+              <span class="card-tag">Streamlit</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://arthritis-detection-gee3uhlivfyvxuihelqqrz.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-live">Live App</a>
+            <a href="https://github.com/MandaBhavana/Arthritis-Detection" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repository</a>
+          </div>
+        </div>
+
+        <div class="grid-card">
+          <div>
+            <h4>Translation Model Comparison (NLP)</h4>
+            <p>Benchmarked four neural machine translation models using  back-translation. Evaluated semantic preservation with cosine similarity, accuracy thresholds, and runtime analysis to compare translation quality and efficiency.</p>
+            <div class="card-tags">
+              <span class="card-tag">Python</span>
+              <span class="card-tag">NLP</span>
+              <span class="card-tag">Model Benchmarking</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/Clarkson-Applied-Data-Science/translation-model-comparison" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repository</a>
+          </div>
+        </div>
+
+        <div class="grid-card">
+          <div>
+            <h4>Bitcoin Price Prediction & Time-Series Analysis</h4>
+            <p>An analytical forecasting pipeline focused on extracting market signals, recognizing cyclical patterns, and generating short-term forecasts from historical financial logs using ARIMA models.</p>
+            <div class="card-tags">
+              <span class="card-tag">Time Series</span>
+              <span class="card-tag">ARIMA</span>
+              <span class="card-tag">Python (Pandas, NumPy)</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/Clarkson-Applied-Data-Science/2025_ia651_manda_saroj" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repository</a>
+          </div>
+        </div>
+
+
+        <div class="grid-card">
+          <div>
+            <h4>FastAPI Movie & User API</h4>
+            <p>Developed a FastAPI-based REST API backed by MySQL for querying a 400K+ row IMDb movie dataset, implementing API-key authentication, SHA-256 token hashing, rate limiting, and indexed SQL queries for efficient movie search and filtering.</p>
+            <div class="card-tags">
+              <span class="card-tag">Python</span>
+              <span class="card-tag">FastAPI</span>
+              <span class="card-tag">MySQL</span>
+              <span class="card-tag">REST APIs</span>
+              <span class="card-tag">SQL</span>
+              <span class="card-tag">Authentication</span>
+
+            </div>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/Clarkson-Applied-Data-Science/F25_IA626_Chendrr_Mandab" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Repository</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- SECTION 3: EXPERIENCE -->
+    <div class="content-section" id="sec-experience">
+      <span class="section-badge b-grey">03. Experience</span>
+      <h2>Work Experience</h2>
+      
+      <div style="margin-bottom: 35px;">
+        <p style="font-size: 1.15rem; color: #111; margin-bottom: 6px; font-weight: 700;">Data Analyst Trainee — Developer Web</p>
+        <p style="font-size: 0.88rem; color: var(--folder-purple); font-weight: 700; margin-bottom: 14px;">Jun 2023 – Jul 2024</p>
+        
+        <div class="grid-list">
+          <div class="grid-card">
+            <h4>Data Integration & Reconciliation</h4>
+            <p>Extracted, transformed, and reconciled complex datasets across multiple relational database sources using advanced SQL querying and Python scripts, safeguarding data integrity for downstream analytics.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Workflow Automation</h4>
+            <p>Designed and deployed automated recurring reports and operational dashboards that consolidated disparate data inputs into clear KPIs, drastically reducing manual processing overhead for stakeholders.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Quality Assurance & Root Cause Analysis</h4>
+            <p>Investigated anomalous data points and source-level discrepancies, systematically tracing root causes and engineering validation checks to prevent recurring data pipeline failures.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Cross-Functional Collaboration</h4>
+            <p>Partnered closely with technical and business teams to translate open-ended operational questions into well-structured, data-driven analytical summaries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size: 1.15rem; color: #111; margin-bottom: 6px; font-weight: 700;">Web Development Intern — Raise Digital</p>
+        <p style="font-size: 0.88rem; color: var(--folder-purple); font-weight: 700; margin-bottom: 14px;">Jun 2022 – Jul 2022</p>
+        
+        <div class="grid-list">
+          <div class="grid-card">
+            <h4>Application Testing & Validation</h4>
+            <p>Built, tested, and validated data-driven features and outputs for a single-page e-commerce application to ensure strict adherence to functional requirements prior to production release.</p>
+          </div>
+          <div class="grid-card">
+            <h4>Requirements Documentation</h4>
+            <p>Authored comprehensive functional specifications and structured test cases, helping streamline coordination across teams and ensure on-time project delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- SECTION 4: SKILLS -->
+    <div class="content-section" id="sec-skills">
+      <span class="section-badge b-yellow">04. Technical Stack</span>
+      <h2>Tech Stack</h2>
+      <div class="skills-grid">
+        
+        <div class="skill-category-card">
+          <h4>Languages & Querying</h4>
+          <div class="tag-cloud">
+            <span>SQL</span>
+            <span>Python</span>
+            <span>R</span>
+          </div>
+        </div>
+
+        <div class="skill-category-card">
+          <h4>Machine Learning & Data Libraries</h4>
+          <div class="tag-cloud">
+            <span>TensorFlow</span>
+            <span>Pandas</span>
+            <span>NumPy</span>
+            <span>Scikit-learn</span>
+
+          </div>
+        </div>
+
+        <div class="skill-category-card">
+          <h4>NLP & Generative AI</h4>
+          <div class="tag-cloud">
+            <span>Hugging Face</span>
+            <span>LangChain</span>
+            <span>spaCy</span>
+            <span>LLM Fine-Tuning</span>
+            <span>Prompt Engineering</span>
+            <span>RAG</span>
+            <span>Sentiment Analysis</span>
+
+          </div>
+        </div>
+        <div class="skill-category-card">
+          <h4>Databases & Infrastructure</h4>
+          <div class="tag-cloud">
+            <span>MySQL</span>
+            <span>DBMS</span>
+
+
+          </div>
+        </div>
+
+        <div class="skill-category-card">
+          <h4>Web Development & APIs</h4>
+          <div class="tag-cloud">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>FastAPI</span>
+            <span>REST APIs</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-category-card">
+          <h4>Data Visualization & BI</h4>
+          <div class="tag-cloud">
+            <span>Power BI</span>
+            <span>Tableau</span>
+            <span>R Shiny</span>
+            <span>Microsoft Excel</span>
+            <span>Streamlit</span>
+          </div>
+        </div>
+
+        <div class="skill-category-card">
+          <h4>Core Methodologies</h4>
+          <div class="tag-cloud">
+            <span>ETL</span>
+            <span>Data Cleaning</span>
+            <span>Data Quality</span>
+            <span>Data Mining</span>
+            <span>Statistical Analysis</span>
+          </div>
+        </div>
+
+        <div class="skill-category-card">
+          <h4>Tools & Workflows</h4>
+          <div class="tag-cloud">
+            <span>GitHub</span>
+            <span>VS Code</span>
+            <span>Alteryx</span>
+            <span>KNIME</span>
+            <span>Claude</span>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+
+    <!-- SECTION 5: EDUCATION -->
+    <div class="content-section" id="sec-education">
+      <span class="section-badge b-green">05. Education</span>
+      <h2>Academic Background</h2>
+      
+      <div class="grid-list">
+        <div class="grid-card">
+          <div>
+            <h4>Master of Science in Applied Data Science</h4>
+            <p style="font-size: 0.88rem; color: var(--folder-purple); font-weight: 700; margin-bottom: 8px;">Clarkson University</p>
+            <p>Focused on advanced machine learning, predictive modeling, data engineering, statistical analysis, and interactive dashboard systems.</p>
+            <p><strong>Aug 2024 – May 2026</strong></p>
+          </div>
+          <div class="card-tags" style="margin-top: 16px;">
+          
+          </div>
+        </div>
+
+        <div class="grid-card">
+          <div>
+            <h4>Bachelor of Engineering in Computer Science & Engineering</h4>
+            <p style="font-size: 0.88rem; color: var(--folder-purple); font-weight: 700; margin-bottom: 8px;">matrusri engineering college</p>
+            <p>Built a strong foundational core in software engineering, database management, structured programming languages, and system architecture.</p>
+            <p><strong>Jul 2019 – Jun 2023</strong></p>
+          </div>
+          <div class="card-tags" style="margin-top: 16px;">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Designed By Bhavana Manda • 2026
+  </footer>
+
+  <script>
+    function isolateSection(sectionId, folderElement) {
+      const paper = folderElement.querySelector('.folder-paper');
+      
+      paper.style.transform = 'translateY(-95px) scale(1.05)';
+      folderElement.style.transform = 'translateY(-12px) scale(1.03)';
+      folderElement.style.zIndex = '99';
+
+      setTimeout(() => {
+        paper.style.transform = '';
+        folderElement.style.transform = '';
+        
+        const flowContainer = document.getElementById('portfolio-flow');
+        flowContainer.classList.add('isolated-mode');
+
+        document.querySelectorAll('.content-section').forEach(sec => {
+          sec.classList.remove('active-target');
+        });
+        document.getElementById(sectionId).classList.add('active-target');
+
+        document.getElementById('floating-back').style.display = 'inline-flex';
+
+        flowContainer.scrollIntoView({ behavior: 'smooth' });
+      }, 450);
+    }
+
+    function resetToFullView() {
+      document.getElementById('floating-back').style.display = 'none';
+
+      const flowContainer = document.getElementById('portfolio-flow');
+      flowContainer.classList.remove('isolated-mode');
+      
+      document.querySelectorAll('.content-section').forEach(sec => {
+        sec.classList.remove('active-target');
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
